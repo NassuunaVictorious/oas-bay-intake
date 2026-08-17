@@ -1,4 +1,6 @@
 Name: NASSUUNA VICTORIOUS
+
+
 OASBay Job Card Intake is a Vue 3 single-page application built for Oyera Auto Service Bay Ltd. It enables Senior Technicians to register vehicles, select service options, issue inventory parts, and view live invoice totals.
 
 Key Components & Business Rules:
