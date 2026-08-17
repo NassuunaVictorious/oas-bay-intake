@@ -11,3 +11,4 @@ ConfirmationCard.vue: Displays a live summary (plate, owner, class, selected ser
 Rubric & Concepts Covered: Uses a Vite setup, 3 SFCs, reactive state (reactive/ref), v-model form bindings, v-for list rendering, v-if/v-else conditional logic, parent-child communication (props/emits), onMounted lifecycle hook, and scoped CSS—built strictly with plain HTML/CSS (no external UI libraries).
 
 Quick Start: Run npm install followed by npm run dev to launch locally at http://localhost:5173/
+<img width="1083" height="770" alt="Screen Shot 2026-08-17 at 9 42 57 PM" src="https://github.com/user-attachments/assets/01707297-4397-4492-940e-e126ea6706c4" />
