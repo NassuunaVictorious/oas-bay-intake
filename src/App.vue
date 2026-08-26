@@ -1,43 +1,3 @@
-<!-- <template>
-  <div id="app-container">
-    <h1>Oyera Auto Service Bay - Job Card Intake</h1>
-
-    
-    <JobCardForm 
-      :jobData="jobData"
-      :availableServices="services"
-      :technicians="technicians"
-      :bays="bays"
-      @update:plateNumber="val => jobData.plateNumber = val"
-      @update:ownerName="val => jobData.ownerName = val"
-      @update:vehicleClass="val => jobData.vehicleClass = val"
-      @update:selectedServices="val => jobData.selectedServices = val"
-      @update:ownerContact="val=> jobData.ownerContact=val"
-      @update:technician="val => jobData.technician=val"
-      @update:bay="val => jobData.bay = val"   
-    </JobCardForm>
-    />
-
-    
-    <h2>Parts Catalogue</h2>
-    <div class="parts-grid">
-      <PartCard 
-        v-for="part in parts" 
-        :key="part.id"
-        :id="part.id"
-        :name="part.name"
-        :unitPrice="part.unitPrice"
-        :qtyInStock="part.qtyInStock"
-        @issue-part="handleIssuePart"
-      />
-    </div>
-
-    <ConfirmationCard 
-      :jobData="jobData"
-      :labourCharge="LABOUR_CHARGE"
-    />
-  </div>
-</template> -->
 <template>
   <div id="app-container">
 
@@ -52,22 +12,19 @@
 
   </div>
 </template>
+
 <script setup>
 import { reactive, ref, onMounted } from 'vue'
-import JobCardForm from './components/JobCardForm.vue'
-import PartCard from './components/PartCard.vue'
-import ConfirmationCard from './components/ConfirmationCard.vue'
-
 
 const LABOUR_CHARGE = 20000
-
 
 const jobData = reactive({
   plateNumber: '',
   ownerName: '',
+  ownerContact: '',
   vehicleClass: '',
-  technician:'',
-  bay:'',
+  technician: '',
+  bay: '',
   selectedServices: [],
   issuedParts: []
 })
@@ -83,26 +40,47 @@ const technicians = ref([
 ])
 
 const bays = ref([
-  'Bay 1' ,
+  'Bay 1',
   'Bay 2',
-  'Bay 3', 
+  'Bay 3'
 ])
 
 const parts = ref([])
 
 onMounted(() => {
-  console.log("OAS Bay Intake loaded")
-  
+  console.log('OAS Bay Intake loaded')
+
   parts.value = [
-    { id: 1, name: 'Engine Oil (20W-50)', unitPrice: 120000, qtyInStock: 10 },
-    { id: 2, name: 'Oil Filter', unitPrice: 180000, qtyInStock: 8 },
-    { id: 3, name: 'Brake Fluid', unitPrice: 15000, qtyInStock: 5 },
-    { id: 4, name: 'Brake Pads (Front)', unitPrice: 45000, qtyInStock: 4 }
+    {
+      id: 1,
+      name: 'Engine Oil (20W-50)',
+      unitPrice: 120000,
+      qtyInStock: 10
+    },
+    {
+      id: 2,
+      name: 'Oil Filter',
+      unitPrice: 180000,
+      qtyInStock: 8
+    },
+    {
+      id: 3,
+      name: 'Brake Fluid',
+      unitPrice: 15000,
+      qtyInStock: 5
+    },
+    {
+      id: 4,
+      name: 'Brake Pads (Front)',
+      unitPrice: 45000,
+      qtyInStock: 4
+    }
   ]
 })
 
 function handleIssuePart(partId) {
   const part = parts.value.find(p => p.id === partId)
+
   if (part && part.qtyInStock > 0) {
     part.qtyInStock--
     jobData.issuedParts.push(part)
@@ -116,6 +94,20 @@ function handleIssuePart(partId) {
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+  padding: 15px 0;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav a.router-link-active {
+  font-weight: bold;
 }
 
 .parts-grid {

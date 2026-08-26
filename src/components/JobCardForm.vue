@@ -22,7 +22,7 @@
         placeholder="e.g. Mukasa James"
       />
     </div>
-  <div class="form-group">
+<div class="form-group">
   <label>Owner Contact:</label>
   <input
     type="text"
@@ -48,9 +48,9 @@
   <label>Technician:</label>
 
   <select
-  v-model="selectedTechnician"
-  @change="$emit('update:technician', selectedTechnician)"
->
+    v-model="selectedTechnician"
+    @change="$emit('update:technician', selectedTechnician)"
+  >
     <option value="">-- Select Technician --</option>
 
     <option
@@ -61,26 +61,7 @@
       {{ technician }}
     </option>
   </select>
-  <div class="form-group">
-  <label>Bay:</label>
-<select
-  v-model="selectedBay"
-  @change="$emit('update:bay', selectedBay)"
->
-  
-    <option value="">-- Select Bay --</option>
-
-    <option
-      v-for="bay in bays"
-      :key="bay"
-      :value="bay"
-    >
-      {{ bay }}
-    </option>
-  </select>
 </div>
-</div>
-
     <div class="form-group">
       <label>Fixed Labour Charge:</label>
       <input type="text" value="20,000 UGX" disabled />
