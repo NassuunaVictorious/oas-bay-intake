@@ -6,10 +6,16 @@
     <JobCardForm 
       :jobData="jobData"
       :availableServices="services"
+      :technicians="technicians"
+      :bays="bays"
       @update:plateNumber="val => jobData.plateNumber = val"
       @update:ownerName="val => jobData.ownerName = val"
       @update:vehicleClass="val => jobData.vehicleClass = val"
       @update:selectedServices="val => jobData.selectedServices = val"
+      @update:ownerContact="val=> jobData.ownerContact=val"
+      @update:technician="val => jobData.technician=val"
+      @update:bay="val => jobData.bay = val"   
+    </JobCardForm>
     />
 
     
@@ -47,6 +53,8 @@ const jobData = reactive({
   plateNumber: '',
   ownerName: '',
   vehicleClass: '',
+  technician:'',
+  bay:'',
   selectedServices: [],
   issuedParts: []
 })
@@ -54,6 +62,17 @@ const jobData = reactive({
 const services = ref([
   { name: 'Wheel alignment', price: 30000 },
   { name: 'Wheel balancing', price: 20000 }
+])
+
+const technicians = ref([
+  { name: 'Okello' },
+  { name: 'Lalobo' }
+])
+
+const bays = ref([
+  'Bay 1' ,
+  'Bay 2',
+  'Bay 3', 
 ])
 
 const parts = ref([])

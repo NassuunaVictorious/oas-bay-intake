@@ -8,7 +8,7 @@ import NotFound from '../views/Error.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/intake',
     name: 'Intake',
     component: Intake
   },

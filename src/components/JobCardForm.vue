@@ -22,6 +22,15 @@
         placeholder="e.g. Mukasa James"
       />
     </div>
+  <div class="form-group">
+  <label>Owner Contact:</label>
+  <input
+    type="text"
+    v-model="ownerContact"
+    @input="$emit('update:ownerContact', ownerContact)"
+    placeholder="e.g. 0700123456"
+  />
+</div>
 
     <div class="form-group">
       <label>Vehicle Class:</label>
@@ -35,6 +44,42 @@
         <option value="Commercial">Commercial</option>
       </select>
     </div>
+    <div class="form-group">
+  <label>Technician:</label>
+
+  <select
+  v-model="selectedTechnician"
+  @change="$emit('update:technician', selectedTechnician)"
+>
+    <option value="">-- Select Technician --</option>
+
+    <option
+      v-for="technician in technicians"
+      :key="technician"
+      :value="technician"
+    >
+      {{ technician }}
+    </option>
+  </select>
+  <div class="form-group">
+  <label>Bay:</label>
+<select
+  v-model="selectedBay"
+  @change="$emit('update:bay', selectedBay)"
+>
+  
+    <option value="">-- Select Bay --</option>
+
+    <option
+      v-for="bay in bays"
+      :key="bay"
+      :value="bay"
+    >
+      {{ bay }}
+    </option>
+  </select>
+</div>
+</div>
 
     <div class="form-group">
       <label>Fixed Labour Charge:</label>
@@ -62,16 +107,25 @@
 <script setup>
 import { ref } from 'vue'
 
+const ownerContact = ref('')
+const selectedTechnician = ref('')
+const selectedBay = ref('')
+
 const props = defineProps({
   jobData: Object,
-  availableServices: Array
+  availableServices: Array,
+  technicians: Array,
+  bays: Array
 })
 
 defineEmits([
   'update:plateNumber', 
   'update:ownerName', 
   'update:vehicleClass', 
-  'update:selectedServices'
+  'update:technician',
+  'update:bay',
+  'update:selectedServices',
+
 ])
 
 const selectedServicesInternal = ref([])
