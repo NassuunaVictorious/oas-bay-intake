@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div id="app-container">
     <h1>Oyera Auto Service Bay - Job Card Intake</h1>
 
@@ -37,8 +37,21 @@
       :labourCharge="LABOUR_CHARGE"
     />
   </div>
-</template>
+</template> -->
+<template>
+  <div id="app-container">
 
+    <nav>
+      <RouterLink to="/intake">Intake</RouterLink>
+      <RouterLink to="/bays">Bays</RouterLink>
+      <RouterLink to="/parts">Parts</RouterLink>
+      <RouterLink to="/reports">Reports</RouterLink>
+    </nav>
+
+    <RouterView />
+
+  </div>
+</template>
 <script setup>
 import { reactive, ref, onMounted } from 'vue'
 import JobCardForm from './components/JobCardForm.vue'

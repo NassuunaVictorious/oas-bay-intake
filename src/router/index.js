@@ -1,10 +1,11 @@
+import { createRouter, createWebHistory } from 'vue-router'
+
 import Intake from '../views/IntakeView.vue'
 import Bays from '../views/BaysView.vue'
 import Parts from '../views/PartsView.vue'
 import Reports from '../views/ReportsView.vue'
 import Job from '../views/JobView.vue'
-import NotFound from '../views/Error.vue'
-
+import NotFound from '../views/NotFoundView.vue'
 
 const routes = [
   {
@@ -28,10 +29,15 @@ const routes = [
     component: Reports
   },
   {
-  path: '/job/:plate',
-  name: 'Job',
-  component: Job
-}
+    path: '/job/:plate',
+    name: 'Job',
+    component: Job
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: NotFound
+  }
 ]
 
 const router = createRouter({
