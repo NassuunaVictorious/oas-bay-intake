@@ -83,7 +83,11 @@ function handleIssuePart(partId) {
 
   if (part && part.qtyInStock > 0) {
     part.qtyInStock--
-    jobData.issuedParts.push(part)
+    jobData.issuedParts.push({
+      id: part.id,
+      name: part.name,
+      unitPrice: part.unitPrice
+    })
   }
 }
 </script>
