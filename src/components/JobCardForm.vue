@@ -72,12 +72,11 @@
         <option value="">-- Select Technician --</option>
 
         <option
-          v-for="technician in technicians"
-          :key="technician.name"
-          :value="technician.name"
-        >
-          {{ technician.name }}
-        </option>
+  v-for="technician in technicians"
+  :key="technician.name"
+  :value="technician.name" >
+  {{ technician.name }}
+</option>
       </select>
 
       <p v-if="!technicianValid" class="error">
