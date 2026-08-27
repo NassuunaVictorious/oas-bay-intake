@@ -147,13 +147,13 @@
       Form is ready to submit.
     </div>
 
-    <button
-      type="button"
-      :disabled="errorCount > 0"
-      @click="submitted = true"
-    >
-      Submit Job Card
-    </button>
+  <button
+  type="button"
+  :disabled="errorCount > 0"
+  @click="$emit('submit-job')"
+>
+  Submit Job Card
+</button>
 
     <p v-if="submitted" class="success">
       Job card submitted.
@@ -178,7 +178,8 @@ const emit = defineEmits([
   'update:vehicleClass',
   'update:technician',
   'update:bay',
-  'update:selectedServices'
+  'update:selectedServices',
+  'submit-job'
 ])
 
 const ownerContact = ref('')

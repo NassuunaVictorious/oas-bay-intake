@@ -29,6 +29,40 @@
 </div>
 
   </div>
+  <JobCardForm 
+  :jobData="jobData"
+  :availableServices="services"
+  :technicians="technicians"
+  :bays="bays"
+
+  @update:plateNumber="jobData.plateNumber = $event"
+  @update:ownerName="jobData.ownerName = $event"
+  @update:ownerContact="jobData.ownerContact = $event"
+  @update:vehicleClass="jobData.vehicleClass = $event"
+  @update:technician="jobData.technician = $event"
+  @update:bay="jobData.bay = $event"
+  @update:selectedServices="jobData.selectedServices = $event"
+
+  @submit-job="saveJob"
+>
+</JobCardForm>
+  <ConfirmationCard 
+  :jobData="jobData"
+  :labourCharge="LABOUR_CHARGE"
+/>
+<p>
+  Jobs recorded: {{ oasStore.jobCount }}
+</p>
+<div v-if="oasStore.jobs.length > 0">
+  <h3>Saved Jobs</h3>
+
+  <div v-for="job in oasStore.jobs" :key="job.plateNumber">
+    <p>
+      {{ job.plateNumber }} - {{ job.ownerName }}
+    </p>
+  </div>
+</div>
+
 </template>
 
 <script setup>
