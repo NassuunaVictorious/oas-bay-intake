@@ -6,6 +6,7 @@ import Parts from '../views/PartsView.vue'
 import Reports from '../views/ReportsView.vue'
 import Job from '../views/JobView.vue'
 import NotFound from '../views/NotFoundView.vue'
+import Manager from '../views/ManagerView.vue'
 
 const routes = [
   {
@@ -44,5 +45,11 @@ const router = createRouter({
   history: createWebHistory(),
   routes
 })
+router.beforeEach((to) => {
+  const role = localStorage.getItem('role') || 'manager'
 
+  if (to.meta.requiresManager && role !== 'manager') {
+    return '/intake'
+  }
+})
 export default router
