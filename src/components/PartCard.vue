@@ -4,12 +4,17 @@
     <p>Price: UGX {{ unitPrice.toLocaleString() }}</p>
     <p>In Stock: {{ qtyInStock }}</p>
 
-    
-    <button v-if="qtyInStock > 0" @click="issuePart" class="btn-issue">
-      Issue to Job
+   <p v-if="qtyInStock <= 2" class="warning">
+      Low stock
+    </p>
+
+    <button
+      :disabled="qtyInStock === 0"
+      @click="$emit('issue-part', id)"
+    >
+      Issue Part
     </button>
-    <span v-else class="out-of-stock">Out of Stock</span>
-  </div>
+    </div>
 </template>
 
 <script setup>
