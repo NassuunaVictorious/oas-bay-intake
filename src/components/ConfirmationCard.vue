@@ -37,6 +37,21 @@
       <h3 class="grand-total">TOTAL: UGX {{ grandTotal.toLocaleString() }}</h3>
     </div>
   </div>
+  <p>
+  Services Subtotal:
+  UGX {{ servicesTotal.toLocaleString() }}
+</p>
+
+<p>
+  Parts Subtotal:
+  UGX {{ partsTotal.toLocaleString() }}
+</p>
+
+<hr>
+
+<h3>
+  TOTAL: UGX {{ grandTotal.toLocaleString() }}
+</h3>
 </template>
 
 <script setup>
