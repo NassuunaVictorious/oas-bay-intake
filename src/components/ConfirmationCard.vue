@@ -5,6 +5,10 @@
     <div class="summary-details">
       <p><strong>Plate:</strong> {{ jobData.plateNumber || 'None provided' }}</p>
       <p><strong>Owner:</strong> {{ jobData.ownerName || 'None provided' }}</p>
+      <p>
+  <strong>Contact:</strong>
+  {{ jobData.ownerContact || 'None provided' }}
+</p>
       <p><strong>Class:</strong> {{ jobData.vehicleClass || 'None selected' }}</p>
       
       <p>
