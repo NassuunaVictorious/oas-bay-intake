@@ -9,13 +9,39 @@
     </nav>
 
     <RouterView />
+    <div class="parts-grid">
+  <PartCard 
+    v-for="part in oasStore.parts"
+    :key="part.id"
+    :id="part.id"
+    :name="part.name"
+    :unitPrice="part.unitPrice"
+    :qtyInStock="part.qtyInStock"
+    @issue-part="handleIssuePart"
+  />
+</div>
+<div v-if="oasStore.lowStockParts.length > 0">
+  <h3>Low Stock Parts</h3>
+
+  <p v-for="part in oasStore.lowStockParts" :key="part.id">
+    {{ part.name }} - {{ part.qtyInStock }} left
+  </p>
+</div>
 
   </div>
 </template>
 
 <script setup>
 import { reactive, ref, onMounted } from 'vue'
+import { useOasStore } from './stores/oasStore'
 
+const oasStore = useOasStore()
+oasStore.parts = [
+  { id: 1, name: 'Engine Oil (20W-50)', unitPrice: 120000, qtyInStock: 10 },
+  { id: 2, name: 'Oil Filter', unitPrice: 180000, qtyInStock: 8 },
+  { id: 3, name: 'Brake Fluid', unitPrice: 15000, qtyInStock: 5 },
+  { id: 4, name: 'Brake Pads (Front)', unitPrice: 45000, qtyInStock: 4 }
+]
 const LABOUR_CHARGE = 20000
 
 const jobData = reactive({
@@ -82,13 +108,23 @@ function handleIssuePart(partId) {
   const part = parts.value.find(p => p.id === partId)
 
   if (part && part.qtyInStock > 0) {
-    part.qtyInStock--
+    oasStore.issuePart(partId)
+
     jobData.issuedParts.push({
       id: part.id,
       name: part.name,
       unitPrice: part.unitPrice
     })
   }
+}
+function saveJob() {
+  oasStore.addJob({
+    plateNumber: jobData.plateNumber,
+    ownerName: jobData.ownerName,
+    vehicleClass: jobData.vehicleClass,
+    technician: jobData.technician,
+    bay: jobData.bay
+  })
 }
 </script>
 
