@@ -54,12 +54,11 @@
 <script setup>
 import { reactive, ref } from 'vue'
 import { useOasStore } from './stores/oasStore'
-import { addJob } from './services/api'
+
 
 const oasStore = useOasStore()
 const LABOUR_CHARGE = 20000
 
-// Initialize store data in one central place
 oasStore.parts = [
   { id: 1, name: 'Engine Oil (20W-50)', unitPrice: 120000, qtyInStock: 10 },
   { id: 2, name: 'Oil Filter', unitPrice: 180000, qtyInStock: 8 },
@@ -99,14 +98,8 @@ function handleIssuePart(partId) {
   }
 }
 
-async function saveJob() {
-  try {
-    // Post the reactive state properties directly
-    await addJob({ ...jobData })
-    oasStore.addJob({ ...jobData })
-    alert('Job saved successfully')
-  } catch (err) {
-    alert('Could not save job')
-  }
+function saveJob() {
+  oasStore.addJob({ ...jobData })
+  alert('Job saved successfully')
 }
 </script>

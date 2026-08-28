@@ -4,6 +4,12 @@ export const useOasStore = defineStore('oas', {
   state: () => ({
     parts: [],
     jobs: [],
+    jobCount: (state) => {
+  return state.jobs.length
+},
+addJob(job) {
+  this.jobs.push(job)
+},
     user: {
       name: 'Admin',
       role: 'manager'

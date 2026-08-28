@@ -4,15 +4,20 @@
 
     <p>Total jobs: {{ oasStore.jobCount }}</p>
 
-    <p v-if="oasStore.jobCount === 0">
+    <p v-if="oasStore.jobs.length === 0">
       No jobs have been recorded yet.
     </p>
 
-    <div v-for="job in oasStore.jobs" :key="job.id" class="job">
-      <h3>Job {{ job.id }}</h3>
+    <div
+      v-for="(job, index) in oasStore.jobs"
+      :key="index"
+      class="job"
+    >
+      <h3>Job {{ index + 1 }}</h3>
       <p>Plate: {{ job.plateNumber }}</p>
       <p>Owner: {{ job.ownerName }}</p>
-      <p>Vehicle: {{ job.vehicleClass }}</p>
+      <p>Contact: {{ job.ownerContact }}</p>
+      <p>Vehicle Class: {{ job.vehicleClass }}</p>
       <p>Technician: {{ job.technician }}</p>
       <p>Bay: {{ job.bay }}</p>
     </div>
