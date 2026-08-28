@@ -15,3 +15,6 @@ Rubric & Concepts Covered: Uses a Vite setup, 3 SFCs, reactive state (reactive/r
 
 Quick Start: Run npm install followed by npm run dev to launch locally at http://localhost:5173/
 <img width="1083" height="770" alt="Screen Shot 2026-08-17 at 9 42 57 PM" src="https://github.com/user-attachments/assets/01707297-4397-4492-940e-e126ea6706c4" />
+
+
+Some of the bugs i had were missing routes, and missing elements and I had to check where errors
