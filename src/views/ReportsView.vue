@@ -12,9 +12,9 @@
       <p>Total jobs: {{ jobs.length }}</p>
 
       <div v-for="job in jobs" :key="job.id" class="job">
-        <p>Job {{ job.id }}</p>
-        <p>{{ job.title }}</p>
-      </div>
+  <h3>Job {{ job.id }}</h3>
+  <p>{{ job.title }}</p>
+</div>
     </div>
   </div>
 </template>
